@@ -1,16 +1,31 @@
 import { useState } from 'react'
-import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native'
+import {View, Text, StyleSheet, Image, TouchableOpacity, Modal} from 'react-native'
 import Slider from '@react-native-community/slider'
+import * as Clipboard from 'expo-clipboard';
+import { ModalPassword } from './components/modal';
 
 let charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
 export default function App(){
   const [numberCharacters, setNumberCharacters] = useState(10)
-  
+  const [finalPassword, setFinalPassword] = useState("")
+  const [modalVisible, setModalVisible] = useState(false);
+
+
   function generatePassword(){
-    console.log("click made!")
+    let password = "";
+    for(let i=0, n = charset.length; i < numberCharacters; i++){
+      password += charset.charAt(Math.floor(Math.random() * n))
+    };
+    setFinalPassword(password);
+    setModalVisible(true);
   }
   
+  const copyToClipboard = async () => {
+    await Clipboard.setStringAsync(finalPassword);
+  };
+
+
   return(
     <View style={styles.container}>
       <Image 
@@ -36,6 +51,22 @@ export default function App(){
       <TouchableOpacity style={styles.button} onPress={generatePassword}>
         <Text style={styles.buttonText}>Gerar senha</Text>
       </TouchableOpacity>
+      <Modal visible={modalVisible} animationType='fade' transparent={true}>
+        <ModalPassword handleClose={() => setModalVisible(false)}/>
+      </Modal>
+      {finalPassword ?  (
+      <>
+        <View style={styles.passwordView}>
+        <Text style={styles.password}>
+          Sua senha é {finalPassword}
+        </Text>
+        <TouchableOpacity style={styles.button} onPress={copyToClipboard}>
+          <Text style={styles.buttonText}>Copiar</Text>
+        </TouchableOpacity>
+        </View>
+      </>
+      ) : <></>
+      }
     </View>
   ) 
 
@@ -77,6 +108,18 @@ const styles = StyleSheet.create(
     title:{
       fontSize: 30,
       fontWeight: 'bold'
+    },
+    password:{
+      fontSize: 14,
+      color: "#FFF",
+      justifyContent: "center"
+    },
+    passwordView:{
+      justifyContent: "space-between",
+      gap: 10,
+      width: "80%",
+      marginTop: 5,
+      alignItems: "center"
     }
 
   }
