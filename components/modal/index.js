@@ -1,17 +1,25 @@
 import {View, Text, StyleSheet, Pressable,  TouchableOpacity} from 'react-native'
 
-export function ModalPassword({handleClose}){
+export function ModalPassword({handleClose, password, handlePassword, handleClipboard}){
   return(
     <View style={styles.container}>
       <View style={styles.modalContainer}>
-        <Text style={styles.title}>Modal Opened</Text>
-        <Pressable style={styles.innerContent}>
-          <Text style={styles.content}>123456</Text>
+        <Text style={styles.title}>Password generated</Text>
+        <Pressable style={styles.innerContent} onLongPress={handleClipboard}>
+          <Text style={styles.content}>{ password}</Text>
         </Pressable>
+
         <View style={styles.buttonArea}>
+
           <TouchableOpacity style={styles.button} onPress={handleClose}>
-            <Text> Voltar </Text>
+            <Text> Return </Text>
           </TouchableOpacity>
+
+          <TouchableOpacity style={styles.button} onPress={handlePassword}>
+            <Text style={styles.buttonText}>Save</Text>
+          </TouchableOpacity>
+
+
         </View>
       </View>
 
@@ -22,7 +30,7 @@ export function ModalPassword({handleClose}){
 const styles = StyleSheet.create(
   {
     modalContainer:{
-      width: "60%",
+      width: "80%",
       height: "30%",
       justifyContent: "center",
       alignItems: "center",
@@ -54,9 +62,12 @@ const styles = StyleSheet.create(
     },
     buttonArea: {
       marginTop: 50,
-      width: "100%",
+      width: "80%",
       justifyContent: "center",
-      height: 20
+      height: 20,
+      display: "flex",
+      flexDirection: "row",
+      gap: 40,
     }, 
     button:{
       backgroundColor: "#FFF",
@@ -64,7 +75,10 @@ const styles = StyleSheet.create(
       marginRight: "auto",
       marginLeft: "auto",
       borderRadius: 5,
-      alignItems: "center"
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      height: 40,
 
     }
 
