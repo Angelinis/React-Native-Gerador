@@ -6,13 +6,13 @@
 
 The project is based on React Native.
 
-![homepage](https://raw.githubusercontent.com/Angelinis/React-Native-Gerador/main/public/screen_1.JPG)
+![homepage](https://raw.githubusercontent.com/Angelinis/React-Native-Gerador/blob/main/src/assets/screen_1.JPG)
 
-![details1](https://raw.githubusercontent.com/Angelinis/React-Native-Geradort/main/public/screen_2.JPG)
+![details1](https://raw.githubusercontent.com/Angelinis/React-Native-Geradort/blob/main/src/assets/screen_2.JPG)
 
-![details2](https://raw.githubusercontent.com/Angelinis/React-Native-Gerador/main/public/screen_3.JPG)
+![details2](https://raw.githubusercontent.com/Angelinis/React-Native-Gerador/blob/main/src/assets/screen_3.JPG)
 
-![details3](https://raw.githubusercontent.com/Angelinis/React-Native-Gerador/main/public/screen_4.JPG)
+![details3](https://raw.githubusercontent.com/Angelinis/React-Native-Gerador/blob/main/src/assets/screen_4.JPG)
 
 ## React Native + Libraries
 
