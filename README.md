@@ -2,7 +2,7 @@
 
 ## What is this?
 
-“Password Generator” is an application to create and save randomly generated apps.
+“Password Generator” is an application to create and save randomly generated passwords.
 
 The project is based on React Native.
 
